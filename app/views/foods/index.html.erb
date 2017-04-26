@@ -1,0 +1,24 @@
+<div id="app">
+ <h1> Add a Food Item </h1>
+  <div> 
+    Name: <input type="text" v-model="newFoodName">
+    Origin: <input type="text" v-model="newFoodOrigin">
+    <button v-on:click="addFoodItem()"> Add Food </button>
+  </div>
+
+ <h4> Total number of Food Items: {{ foods.length }} </h4>
+
+<div>
+ Search by name: <input type="text" v-model="nameFilterbyName">
+</div>
+<div>
+  Search by Place of Origin: <input type="text" v-model="nameFilterOrigin">
+</div>
+  <div v-for="fooditem in filteredFoods">
+    <h2 v-on:click="toggleOrigin(fooditem)"> {{ fooditem.name }} </h2>
+    <p v-bind:class="{strike: fooditem.origin}"> {{ fooditem.origin }} </p>
+    <button v-on:click="deleteFoodItem(fooditem)"> Delete </button>
+  </div>
+
+ </div> 
+

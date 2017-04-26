@@ -17,4 +17,8 @@ Rails.application.routes.draw do
       delete "/foods/:id" => "foods#destroy"
     end
   end
+
+  get "/foods" => "foods#index"
+  post "/foods" => "foods#create"
+  get "/foods/:id" => "foods#show"
 end
