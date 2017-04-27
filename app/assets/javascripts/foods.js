@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       newFoodName: "",
       newFoodOrigin: "",
       nameFilterbyName: "",
-      nameFilterOrigin: ""
+      nameFilterOrigin: "",
+      sortAttribute: "name"
     },
 
     computed: {
@@ -19,7 +20,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
           var lowerOrigin = fooditem.origin.toLowerCase();
           return lowerName.indexOf(lowerNameFilter) !== -1 && lowerOrigin.indexOf(lowerOriginFilter) !== -1;
         });
-        return filtered;
+        var sorted = filtered.sort(function(fooditem1, fooditem2) {
+          return fooditem1[this.sortAttribute] > fooditem2[this.sortAttribute];
+        }.bind(this));
+        return sorted;
       }
     },
 
@@ -29,6 +33,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }.bind(this));
     },
     methods: {
+      setSortAttribute: function(inputAttribute) {
+        this.sortAttribute = inputAttribute;
+      },
       toggleOrigin: function(inputFoodItem) {
         inputFoodItem.origin = !inputFoodItem.origin;
       },

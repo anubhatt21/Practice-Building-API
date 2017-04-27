@@ -14,11 +14,28 @@
 <div>
   Search by Place of Origin: <input type="text" v-model="nameFilterOrigin">
 </div>
-  <div v-for="fooditem in filteredFoods">
-    <h2 v-on:click="toggleOrigin(fooditem)"> {{ fooditem.name }} </h2>
-    <p v-bind:class="{strike: fooditem.origin}"> {{ fooditem.origin }} </p>
-    <button v-on:click="deleteFoodItem(fooditem)"> Delete </button>
-  </div>
+
+<div>
+  <button v-on:click="setSortAttribute('name')">Order by Name</button>
+  <button v-on:click="setSortAttribute('bio')">Order by Origin</button>
+ </div>
+
+  <table style="width:100%" border=1>
+  <thead>
+  <tr>
+  <th> Name: </th>
+  <th> Origin: </th>
+  <th> Edit/Delete </th>
+  </span>
+  </tr>
+  </thead>
+  <tr v-for="fooditem in filteredFoods" >
+    <th v-on:click="toggleOrigin(fooditem)"> {{ fooditem.name }} </th>
+    <th v-bind:class="{strike: fooditem.origin}"> {{ fooditem.origin }} </th>
+    <th> <button v-on:click="deleteFoodItem(fooditem)"> Delete </button> </th>
+  </tr>
+    
+  </table>
 
  </div> 
 
