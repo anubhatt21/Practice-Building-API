@@ -13,15 +13,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     computed: {
       filteredFoods: function() {
         var lowerNameFilter = this.nameFilterbyName.toLowerCase();
-        console.log("lower name filter", lowerNameFilter);
+        var lowerOriginFilter = this.nameFilterOrigin.toLowerCase();
         var filtered = this.foods.filter(function(fooditem) {
           var lowerName = fooditem.name.toLowerCase();
-          return lowerName.indexOf(lowerNameFilter) !== -1;
+          var lowerOrigin = fooditem.origin.toLowerCase();
+          return lowerName.indexOf(lowerNameFilter) !== -1 && lowerOrigin.indexOf(lowerOriginFilter) !== -1;
         });
         return filtered;
-      },
-      filteredFoodsOrigin: function() {
-        var 
       }
     },
 
